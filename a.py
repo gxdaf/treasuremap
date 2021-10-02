@@ -1,5 +1,6 @@
-from os import name
+import os
 import time
+import datetime
 import requests
 import datetime
 import pandas as pd
@@ -7,28 +8,41 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox import firefox_profile, options
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support import select
+from selenium.webdriver.support.select import Select
 import json
 from dicexpec import c
-import os.path
+import shutil
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+
+a = datetime.datetime.now()
+
+if os.path.exists("C:\TreasureMap"):
+    pass
+else:
+    os.mkdir("C:\TreasureMap")
+    os.mkdir("C:\TreasureMap\Downloads")
+
+
+tx_selic = 0
 
 option = Options()
 option.set_preference("browser.download.folderList", 2)
-option.set_preference("browser.download.dir", "C:\Downloads")
 option.set_preference("browser.download.useDownloadDir", True)
+option.set_preference("browser.download.dir", "C:\TreasureMap\Downloads\IPCA")
 option.set_preference("browser.download.viewableInternally.enabledTypes", "")
-option.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.ms-excel")
+option.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.ms-excel, text/csv;charset=UTF-8")
 #option.headless = True
 driver = webdriver.Firefox(options=option)
 
-'''
-url_se = 'https://www3.bcb.gov.br/expectativas2/#/consultaSeriesEstatisticas'
-driver.get(url_se)
-''' 
-time.sleep(5)
-
-'''
 def expec_merc(e):
+    
     t = c.get(e)
+    url_se = c.get('url')['expectativa']
+    driver.get(url_se)
+    time.sleep(5)
     for k in range(3):
             x = driver.find_element_by_xpath(t[k][0])
             x.click()
@@ -38,49 +52,62 @@ def expec_merc(e):
             x.find_element_by_xpath(t[k][2]).click()
             time.sleep(2)    
 
-    driver.find_element_by_xpath('/html/body/app-root/div/app-main/main/div/app-consulta-serie-estatisticas/section/div[2]/div[3]/button').click()
+    driver.find_element_by_xpath(c.get('cliques')['expectativa'][0]).click()
     time.sleep(3)
-    tabela = driver.find_element_by_xpath('/html/body/app-root/div/app-main/main/div/app-consulta-serie-estatisticas/app-detalhe-series-estatisticas/div/section/div/div[2]/div[2]/div[2]/tabset/div/tab/app-series-estatisticas-indicador/div/tabset/div/tab[1]/div/table')
+    tabela = driver.find_element_by_xpath(c.get('cliques')['expectativa'][1])
     cont = tabela.get_attribute('outerHTML')
     soup = BeautifulSoup(cont, 'html.parser')
     tab = soup.find(name='table')
     th = soup.find(name= 'thead').get_text()
     df_full = pd.read_html(str(tab))[0]
+    data_mod = a
+    '''
+    dif = data_mod - a 
+    if dif.total_seconds > 2600000:
+        espec = df_full.to_dict()
+        print(df_full)
+    else:
+        print('Atualizado recentemente.')
+    '''
+
+def selic():
+    url_sa = c.get('url')['selic_meta']
+    driver.get(url_sa)
+    time.sleep(2)
+    xpath_sa = driver.find_element_by_xpath('//*[@id="historicotaxasjuros"]')
+    xpath_sa = xpath_sa.get_attribute('outerHTML')
+    soup = BeautifulSoup(xpath_sa, 'html.parser')
+    tx_selic = soup.find_all('td')[4].get_text()
+    return tx_selic
+
+def download(path, ext, xpath): 
+     with os.scandir(path) as it:
+        for entry in it:
+            if ext in entry.name and entry.is_file():
+                b = datetime.datetime.fromtimestamp(os.path.getmtime(f'C:\TreasureMap\Downloads\{entry}'))
+                c = a - b
+                if c.total_seconds < 2600000:
+                    pass
+            click = xpath
+            return click
+
+def changeDir(file, dest):
+    if os.path.exists(dest) is False:
+        os.mkdir(dest)
+    shutil.move(file, dest)
+
+def ipca():
+    url_ipca = c.get('url')['ipca_atual']
+    driver.get(url_ipca)
+    time.sleep(3)
+    driver.find_element_by_xpath(c.get('cliques')['ipca']).click()
+    time.sleep(5)
+    slt =  Select(driver.find_element_by_xpath('//*[@id="tabelasidra20185213352858export"]')).select_by_value('.csv')
+    download('C:\TreasureMap\Downloads', '.csv', slt)
 
 
-espec = df_full.to_dict()
-onjs = json.dumps(espec)
-fp = open('taxas.json', 'w')
-fp.write(onjs)
-fp.close()
-
-url_sa = 'https://www.bcb.gov.br/controleinflacao/historicotaxasjuros'
-driver.get(url_sa)
-time.sleep(2)
-xpath_sa = driver.find_element_by_xpath('//*[@id="historicotaxasjuros"]')
-xpath_sa = xpath_sa.get_attribute('outerHTML')
-soup = BeautifulSoup(xpath_sa, 'html.parser')
-selic = soup.find_all('td')[4].get_text()
-'''
-
-url_jurcred = 'https://www.bcb.gov.br/estatisticas/txjuros'
-driver.get(url_jurcred)
-time.sleep(5)
-link = driver.find_element_by_xpath('/html/body/app-root/app-root/main/dynamic-comp/div/div/div[1]/div/p/a[2]')
-tab = link.get_attribute('outerHTML')
-soup = BeautifulSoup(tab, 'html.parser')
-sheet = soup.find(name='a').get('href')
-sheet = sheet.split('/')
-sheet = sheet[-1]
-
-'''
-if os.path.exists(f':C\Download\{sheet}') is True:
-    modTimesinceEpoc = os.path.getmtime(f':C\Download\{sheet}')
-    modificationTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(modTimesinceEpoc))
-    print(modTimesinceEpoc - time.localtime())
-    if (modTimesinceEpoc - time.localtime()) < 1500000:
-        print('Arquivo recém-baixado!')
-        pass
-else:
-    link.click()
-'''
+#expec_merc('pib')
+#onjs = json.dumps(espec)
+#fp = open('taxas.json', 'w')
+#fp.write(onjs)
+#fp.close()
