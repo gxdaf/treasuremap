@@ -1,7 +1,4 @@
-import os
 import time
-import datetime
-import requests
 import datetime
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -11,7 +8,6 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import select
 from selenium.webdriver.support.select import Select
 from dicexpec import c
-import shutil
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
