@@ -13,6 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from dbsql import cr_tab, drop_tab, ins_tab
+import dateutil.parser as dparser
 
 dthr = datetime.datetime.now() #Momento atual
 
@@ -55,23 +56,36 @@ def acao():
         print('Opção inexistente.')
         acao()
 
-def to_tuple(valores=None):
-    celulas = [tuple(x) for x in valores.to_records(index=False)]
+def limpeza(valores=None):
+    celulas = [list(x) for x in valores.to_records(index=False)]
+    rem = []
     for celula in celulas:
-        if '\b' in celula:
-            data = celula.index('%s/%s/%s')
-            print(celula[data])
+        for i in range(len(celula)):
+            if '/' in celula[i]:
+                dt = celula[i].split('/')
+                dt[0], dt[-1] = dt[-1], dt[0]
+                celula[i] = '-'.join(dt)
+                celula[i] = f"'{celula[i]}'"
+            elif ',' in celula[i]:
+                celula[i] = celula[i].replace(',', '.')
+            elif (len(celula[i]) == 0):
+                celula[i] = 'NULL'
+            elif '%' in celula[i]:
+                celula[i] = celula[i].replace('%', '')
+    for celula in celulas:
+        print(celula)
+
     print('1. Criar tabela; \n2. Atualizar tabela;\n3. Inserir dados na tabela;\n4. Excluir tabela.\n 5. Nada')
     esc = input('Ação desejada: ')
     nome_tab = input('Insira o nome da tabela: ')
     if '1' in esc:
         tipo_col = []
         colunas = []
-        troca = input(f"Deseja alterar o nome das colunas? (S/N) {valores.head()}\nNa presença de '%', '/' ou '.' no nome das colunas, recomenda-se a mudança.").upper()
+        troca = input(f"Deseja alterar o nome das colunas? (S/N) {valores.head()}\nNa presença de '%', '/' ou '.' no nome das colunas, recomenda-se a mudança. ").upper()
         if 'S' in troca:
             troca = tuple(sorted(valores))
             for coluna in troca:
-                colunas.append(input(f'Digite o nome que substituirá{coluna}').capitalize())
+                colunas.append(input(f'Digite o nome que substituirá {coluna}').capitalize())
         else:
             colunas = tuple(sorted(valores))
         for coluna in colunas:
@@ -82,7 +96,6 @@ def to_tuple(valores=None):
         pass
         #att_tab('selic')
     elif '3' in esc:
-        pass
         ins_tab(nome_tab, celulas)
     elif '4' in esc:
         drop_tab(nome_tab)
@@ -90,7 +103,7 @@ def to_tuple(valores=None):
         pass
     else: 
         print('Opção inválida.')
-        to_tuple()
+        limpeza()
 
 def expec_merc(e): 
     '''
@@ -117,9 +130,9 @@ def expec_merc(e):
     tab = soup.find(name='table')
     th = soup.find(name= 'thead').get_text()
     df = pd.read_html(str(tab))[0]
-    to_tuple(df)
+    limpeza(df)
 
-def selic():
+def selic():   
     '''
     Retorna a Selic Meta atual
     '''
@@ -137,7 +150,7 @@ def selic():
         taxas.append(row.find_all('td')[4].get_text())
     hist_selic = {'Data': datas, 'Taxas': taxas}
     df = pd.DataFrame(hist_selic)
-    to_tuple(df)
+    limpeza(df)
 
 def taxas_atuais(taxa):
     '''
@@ -155,6 +168,6 @@ def taxas_atuais(taxa):
     #da = df.rename(columns={cols[i]: cols[i][1] for i in range(len(cols))})
     for i in range(len(df.columns.values)):
         df.columns.values[i] = df.columns.values[i][1]
-    to_tuple(df)
+    limpeza(df)
 
 acao()
