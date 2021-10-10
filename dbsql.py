@@ -1,4 +1,6 @@
 import mysql.connector
+from numpy import e
+import time
 
 db = mysql.connector.connect(
   host="localhost",
@@ -7,7 +9,7 @@ db = mysql.connector.connect(
   database = "treasuremap"
 )
 
-cursor = db.cursor()
+cursor = db.cursor(buffered = True)
 
 #cursor.execute('CREATE DATABASE treasuremap')
 
@@ -35,10 +37,19 @@ def drop_tab(tabela):
 def ins_tab(tabela, celulas):
   try:
     cursor.execute(f'SELECT * FROM {tabela}')
-    com = []
     for celula in celulas:
-      com.append(f'INSERT INTO {tabela} {celula};')
-    #for i in range(len(com)):
-     # pass
-  except:
-    pass
+      for c in range(len(celula)):
+        if c == 0:
+          com = f'{celula[c]}, '
+        elif c == (len(celula) - 1):
+          com += f'{celula[c]}'
+        else:
+          com += f'{celula[c]}, '
+      query = f'INSERT INTO {tabela} VALUES ({com});'
+      try:
+        cursor.execute(query)
+      except Exception as e:
+        raise e
+      time.sleep(2)
+  except Exception as e:
+    raise e
