@@ -70,6 +70,8 @@ def limpeza(valores=None):
                 celula[i] = celula[i].replace(',', '.')
             elif (len(celula[i]) == 0):
                 celula[i] = 'NULL'
+            elif '%' in celula[i]:
+                celula[i] = celula[i].replace('%', '')
     for celula in celulas:
         print(celula)
 
