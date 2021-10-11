@@ -37,6 +37,10 @@ def drop_tab(tabela):
 def ins_tab(tabela, celulas):
   try:
     cursor.execute(f'SELECT * FROM {tabela}')
+    cursor.execute(f'SHOW COLUMNS FROM {tabela}')
+    for x in cursor:
+      print(x[0])
+    colunas = input('Escreva a ordem do INSERT')
     for celula in celulas:
       for c in range(len(celula)):
         if c == 0:
@@ -45,9 +49,11 @@ def ins_tab(tabela, celulas):
           com += f'{celula[c]}'
         else:
           com += f'{celula[c]}, '
-      query = f'INSERT INTO {tabela} VALUES ({com});'
+      query = f"INSERT INTO {tabela} ({colunas}) VALUES ({com});"
+      print(query)
       try:
         cursor.execute(query)
+        db.commit()
       except Exception as e:
         raise e
       time.sleep(2)

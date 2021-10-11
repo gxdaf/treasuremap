@@ -1,6 +1,7 @@
 import time
 import datetime
 from numpy import e
+import numpy
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -17,14 +18,6 @@ import dateutil.parser as dparser
 
 dthr = datetime.datetime.now() #Momento atual
 
-option = Options()
-option.set_preference("browser.download.folderList", 2)
-option.set_preference("browser.download.useDownloadDir", True)
-option.set_preference("browser.download.dir", "C:\TreasureMap\Downloads\IPCA") 
-option.set_preference("browser.download.viewableInternally.enabledTypes", "")
-option.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.ms-excel, text/csv;charset=UTF-8")
-option.headless = True
-driver = webdriver.Firefox(options=option)
 
 def acao():
     print('Qual tabela deseja consultar?')
@@ -56,25 +49,17 @@ def acao():
         print('Opção inexistente.')
         acao()
 
+option = Options()
+option.set_preference("browser.download.folderList", 2)
+option.set_preference("browser.download.useDownloadDir", True)
+option.set_preference("browser.download.dir", "C:\TreasureMap\Downloads\IPCA") 
+option.set_preference("browser.download.viewableInternally.enabledTypes", "")
+option.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.ms-excel, text/csv;charset=UTF-8")
+option.headless = True
+driver = webdriver.Firefox(options=option)
+
 def limpeza(valores=None):
     celulas = [list(x) for x in valores.to_records(index=False)]
-    rem = []
-    for celula in celulas:
-        for i in range(len(celula)):
-            if '/' in celula[i]:
-                dt = celula[i].split('/')
-                dt[0], dt[-1] = dt[-1], dt[0]
-                celula[i] = '-'.join(dt)
-                celula[i] = f"'{celula[i]}'"
-            elif ',' in celula[i]:
-                celula[i] = celula[i].replace(',', '.')
-            elif (len(celula[i]) == 0):
-                celula[i] = 'NULL'
-            elif '%' in celula[i]:
-                celula[i] = celula[i].replace('%', '')
-    for celula in celulas:
-        print(celula)
-
     print('1. Criar tabela; \n2. Atualizar tabela;\n3. Inserir dados na tabela;\n4. Excluir tabela.\n 5. Nada')
     esc = input('Ação desejada: ')
     nome_tab = input('Insira o nome da tabela: ')
@@ -89,13 +74,40 @@ def limpeza(valores=None):
         else:
             colunas = tuple(sorted(valores))
         for coluna in colunas:
-            tipo_col.append(input(f'Especifique o tipo da coluna {coluna}: ').upper())
-            print(tipo_col)        
+            tipo_col.append(input(f'Especifique o tipo da coluna {coluna}: ').upper())     
         cr_tab(nome_tab, colunas, tipo_col)
     elif '2' in esc:
         pass
         #att_tab('selic')
     elif '3' in esc:
+        print(valores.head)
+        esc = input('Limpar células? (S/N)').upper()
+        if 'S' in esc:
+            for celula in celulas:
+                for i in range(len(celula)):
+                    if isinstance(celula[i], numpy.int64) == True or isinstance(celula[i], numpy.float64) == True:
+                            celula[i] = str(celula[i])
+                            if 'nan' in celula[i]:
+                                celula[i] = 'NULL'
+                            else:
+                                celula[i] = celula[i][:3]
+                                celula[i] = f'{celula[i][:1]}.{celula[i][1:]}'
+                                celula[i] = float(celula[i])
+                    elif isinstance(celula[i], numpy.float64) == False or isinstance(celula[i], numpy.int64) == False or isinstance(celula[i], float) == False:
+                        if '/' in celula[i]:
+                            dt = celula[i].split('/')
+                            dt[0], dt[-1] = dt[-1], dt[0]
+                            celula[i] = '-'.join(dt)
+                            celula[i] = f"'{celula[i]}'"
+                        elif (len(celula[i]) == 0):
+                            celula[i] = 'NULL'
+                        if '%' in celula[i]:
+                            celula[i] = celula[i].translate({ord('%'): None})
+                        if ',' in celula[i]:
+                            celula[i] = celula[i].replace(',', '.')
+                            celula[i] = float(celula[i])
+                        if isinstance(celula[i], str) == True and '-' not in celula[i]:
+                            celula[i] = f"'{celula[i]}'"
         ins_tab(nome_tab, celulas)
     elif '4' in esc:
         drop_tab(nome_tab)
@@ -114,17 +126,17 @@ def expec_merc(e):
     driver.get(url_se)
     time.sleep(5)
     for k in range(3):
-            x = driver.find_element_by_xpath(t[k][0])
-            x.click()
-            time.sleep(1)
-            x.send_keys(t[k][1])
-            time.sleep(1)
-            x.find_element_by_xpath(t[k][2]).click()
-            time.sleep(2)    
+        x = driver.find_element_by_xpath(t[k][0])
+        x.click()
+        time.sleep(1)
+        x.send_keys(t[k][1])
+        time.sleep(1)
+        x.find_element_by_xpath(t[k][2]).click()
+        time.sleep(2)    
 
-    driver.find_element_by_xpath(c.get('cliques')['expectativa'][0]).click()
+    driver.find_element_by_xpath(c.get('cliques')['expectativa'][e][0]).click()
     time.sleep(3)
-    tabela = driver.find_element_by_xpath(c.get('cliques')['expectativa'][1])
+    tabela = driver.find_element_by_xpath(c.get('cliques')['expectativa'][e][1])
     cont = tabela.get_attribute('outerHTML')
     soup = BeautifulSoup(cont, 'html.parser')
     tab = soup.find(name='table')
@@ -168,6 +180,7 @@ def taxas_atuais(taxa):
     #da = df.rename(columns={cols[i]: cols[i][1] for i in range(len(cols))})
     for i in range(len(df.columns.values)):
         df.columns.values[i] = df.columns.values[i][1]
+    print(df)
     limpeza(df)
 
 acao()
