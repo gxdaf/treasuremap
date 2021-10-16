@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Treasure Map: Nunca foi tão fácil investir!</title>
+    </head>
+
+    <body>
+        <h2>Estamos quase acabando!</h2>
+        <form>
+            <p><label for="risco">Risco:</label><br>
+            <input type="text" id="risc" size="25" list="listarisco"></p>
+            <datalist id="listarisco">
+                <option value="Baixo"></option>
+                <option value="Médio"></option>
+                <option value="Alto"></option>
+            </datalist>
+            <br>
+            <p><label for="dfinace">Disponibilidade financeira:</label><br>
+                <input type="text" id="disfinanceira" size="25" list="listadifinace"></p>
+                <datalist id="listadifinace">
+                    <option value="Abaixo de R$1000"></option>
+                    <option value="Entre R$1000 e R$1500"></option>
+                    <option value="Entre R$1500 e R$2000"></option>
+                    <option value="Acima de R$2000"></option>
+                </datalist>
+            <br>
+            <p><label for="liqui">Liquidez desejada:</label><br>
+                <input type="text" id="liquifinanceira" size="25" list="listaliqui"></p>
+                <datalist id="listaliqui">
+                    <option value="Corrente"></option>
+                    <option value="Seca"></option>
+                    <option value="Imediata"></option>
+                    <option value="Geral"></option>
+                </datalist>
+            <br>
+
+            <p><label for="renta">Prospecção de rentabilidade:</label><br>
+                <input type="text" id="prenta" size="25" list="listarenta"></p>
+                <datalist id="listarenta">
+                    <option value="Baixa"></option>
+                    <option value="Média"></option>
+                    <option value="Alta"></option>
+                </datalist>
+            <br>
+
+            <p><label for="imposto">Deseja pagar imposto na operação?:</label><br>
+                <input type="text" id="impostoop" size="25" list="listaimposto"></p>
+                <datalist id="listaimposto">
+                    <option value="Sim"></option>
+                    <option value="Não"></option>                  
+                </datalist>
+            <br>
+            
+            <p><label for="investimento">Área especifica de investimento: </label><br>
+                <input type="text" id="areainvestimento" size="25" list="listainvestimento"></p>
+                <datalist id="listainvestimento">
+                    <option value="Ímobiliaria"></option>
+                    <option value="E-Commerce"></option>
+                    <option value="Tecnologia"></option>
+                    <option value="Alimento"></option>
+                    <option value="Saúde"></option>
+                    <option value="Agronegócio"></option>
+                    <option value="Logística"></option>
+                    <option value="Outra"></option>
+                    <option value="Nenhuma"></option>                  
+                </datalist>
+            <br>    
+            
+            <p><label for="fgc">Deseja a garantia do FGC?:</label><br>
+                <input type="text" id="garantiafgc" size="25" list="listafgc"></p>
+                <datalist id="listafgc">
+                    <option value="Sim"></option>
+                    <option value="Não"></option>                  
+                </datalist>
+            <br>
+
+            <input type="submit" id="submit" value="CADASTRAR">
+          </form>
+    </body>
+</html>    
