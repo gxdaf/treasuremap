@@ -13,7 +13,7 @@ from dicexpec import c
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from dbsql import cr_tab, drop_tab, ins_tab
+from dbsql import cr_tab, drop_tab, ins_tab, att_tab
 import dateutil.parser as dparser
 
 dthr = datetime.datetime.now() #Momento atual
@@ -78,7 +78,7 @@ def limpeza(valores=None):
         cr_tab(nome_tab, colunas, tipo_col)
     elif '2' in esc:
         pass
-        #att_tab('selic')
+        att_tab(tabela)
     elif '3' in esc:
         print(valores.head)
         esc = input('Limpar células? (S/N)').upper()

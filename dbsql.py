@@ -13,6 +13,19 @@ cursor = db.cursor(buffered = True)
 
 #cursor.execute('CREATE DATABASE treasuremap')
 
+def att_tab(tabela, celulas = None):
+  print('1. Atualizar completamente (TRUNCATE);\n2. Atualizar valores já existentes (UPDATE/DELETE);\n3. Alterar tabela.')
+  tipo_att = input('Escolha a opção: ')
+  if '1' in tipo_att:
+    try:
+      cursor.execute(f'TRUNCATE TABLE {tabela}')
+      cursor.commit()
+      ins_tab(tabela, celulas)
+    except Exception as E:
+      raise e
+  else:
+    pass
+
 def cr_tab(tabela, colunas, tipo):
   try:
     cursor.execute(f'SELECT * FROM {tabela}')
