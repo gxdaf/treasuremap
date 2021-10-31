@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <title>Treasure Map: Nunca foi tão fácil investir!</title>
+         {% load static %}
+         {% load crispy_forms_tags %}
+    </head>
+
+    <body>
+        {% block content %}
+        <div class="content-section" style="width: 50%; margin: 20px auto;">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form|crispy }}
+                    <div class="form-group">
+                    </div>
+                </fieldset>
+                <input type="submit" id="submit" value="Cadastrar">
+            </form>
+            {% if request.path == '/cadastro' %}
+                <div class='border-top pt-3' style="float: right;">
+                    <small class="text-muted">Já possui uma conta? <a href="{% url 'login' %}">Entrar.</a></small>
+                </div>
+            {% endif %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>    

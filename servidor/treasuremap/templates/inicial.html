@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/estilo.css' now 'U' %}">
+  <title>Treasure Map</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["Copper", 8.94, "#b87333"],
+        ["Silver", 10.49, "silver"],
+        ["Gold", 19.30, "gold"],
+        ["Platinum", 21.45, "color: #e5e4e2"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                         2]);
+                         
+                         var options = {
+                             title: "Density of Precious Metals, in g/cm^3",
+                             width: 350,
+                             height: 350,
+                             bar: {groupWidth: "70%"},
+                             legend: { position: "none" },
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+                            chart.draw(view, options);
+                        }
+                        </script>
+  
+</head>
+<body>
+    {% if messages %}
+              {% for message in messages %}
+              <div id='message' style="padding: 10px; font-size: 13px; background-color:yellowgreen; color:whitesmoke;">
+              {{message}}
+              </div>
+              {% endfor %}
+          {% endif %}
+    <section id="header">
+        <div class="header container">
+            <div class="nav-bar">
+                <div class="brand">
+                    <a href="#mascot"><h1>Treasure Map</h1></a>
+                </div>
+        <div class="nav-list">
+            <div class="hamburger"><div class="bar"></div></div>
+            <ul>
+            <li><a href="#o-que-e" data-after="O que é">LOREM</a></li>
+            <li><a href="#tutorial" data-after="Tutorial">LOREM</a></li>
+            <li><a href="#como-utilizar" data-after="Como utilizar">LOREM</a></li>
+            <li><a href="#conclusao" data-after="Conclusão">LOREM</a></li>
+            <li><a href="#referencias" data-after="Referências">Artigos</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="perfil"><img src="{% static 'imagens/pessoas.png' %}" alt="pessoas" style="width: 30px; height: 30px">
+                <li><a href='logout'>Logout</a></li>
+              {% else %}
+              <li><a href="entrar"><img src="{% static 'imagens/pessoas.png' %}" alt="pessoas" style="width: 30px; height: 30px">
+            {% endif %}
+            </a></li>
+        </ul>
+    </div>
+</div>
+</div>
+</section>
+<section id="mascot">
+      <div class="mascot container">
+          <div>
+              <h1>Treasure <span></span></h1>
+              <h1>Map<span></span></h1>
+              <a href="entrar" type="button" class="cta">Ingresse já!</a>
+            </div>
+        </div>
+    </section>
+    
+  <section id="o-que-e">
+    <div class="o-que-e">
+      <div class="o-que-e-top">
+        <h1 class="section-title">O que é</h1>
+        <h2>LOREM</h2>
+        
+    </div>
+    <div class="o-que-e-bottom">
+        <div class="o-que-e-box">
+            {% block content %}
+            <h2>Artigos recomendados</h2>
+            {% for artigo in artigos %}
+            <h5><a  style='text-align: justify; font-size: 15px;color: white;' href='%artigo/{{artigo.titulo}}%'>{{ artigo.titulo }}</a></h5>
+            {% endfor %}
+            {% endblock content %}
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="tutorial">
+    <div class="tutorial">
+        <div class="tutoriais">
+            <div class="tutorial-item-exc">
+                <div class="tutorial-info-exc">
+                    <div class="tutoriais-header">
+                        <h1>Simule seu investimento</h1>
+                    </div>
+                    <div class="tutorial-info-card">
+                        <label for="tempo">Tempo:</label>
+                        <p><input type="text" id="prazo" size="25" list="listaprazos"></p>
+                        <label for="rentabilidade">Rentabilidade (%):</label>
+                        <p><input type="number" id="renta" name="rentabilidade"></p>
+                        <label for="vencimento">Vencimento:</label>
+                        <p><input type="date" id="datalimite" name="vencimento"></p>
+                    </div>
+                    <div id="columnchart_values" ></div>
+                </div>
+
+     </div>
+    </div>
+  </div>
+</div>
+</section>
+
+  <section id="como-utilizar">
+    <div class="como-utilizar">
+        <h1 class="section-title">LOREM</h1>
+        <h2>Lorem ipsum</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium iste eligendi, fugit voluptas possimus molestiae alias nihil quasi cum ipsum voluptates tempore dolorum magni, aut obcaecati. Dolores blanditiis totam qui.</p>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <br>
+  <section id="conclusao">
+    <div class="conclusao">
+        <h1 class="section-title">Lorem</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim nobis asperiores eius ex dolorum veniam voluptatem optio quam maxime mollitia, sint atque alias minima, vero animi iure sed modi minus?</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="referencias">
+    <div class="referencias">
+      <div><h1 class="section-title">Lorem</div>
+      <div class="referencias-items">
+        <div class="referencias-item">
+          <div class="icon"><img src=""/></div>
+          <div class="referencias-info">
+            <h1>Lorem Ipsum
+              </h1>
+            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt earum, molestias odit asperiores doloremque quis ex doloribus? Illo qui, possimus tempora excepturi quisquam itaque, accusamus hic consectetur perferendis cupiditate doloribus!</h2>
+          </div>
+        </div>
+        <div class="referencias-item">
+            <div class="icon"><img src=""/></div>
+            <div class="referencias-info">
+              <h1>Lorem Ipsum
+              </h1>
+            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt earum, molestias odit asperiores doloremque quis ex doloribus? Illo qui, possimus tempora excepturi quisquam itaque, accusamus hic consectetur perferendis cupiditate doloribus!</h2>
+            </div>
+          </div>
+          <div class="referencias-item">
+            <div class="icon"><img src=""/></div>
+            <div class="referencias-info">
+              <h1>Lorem Ipsum
+              </h1>
+            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt earum, molestias odit asperiores doloremque quis ex doloribus? Illo qui, possimus tempora excepturi quisquam itaque, accusamus hic consectetur perferendis cupiditate doloribus!</h2>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <div class="footer container">
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+Instalações necessárias:
+	= Django
+	- Pillow
+	- BeautifulSoup
+	- Pandas
+	- My SQL Client
+	- My SQL Connector

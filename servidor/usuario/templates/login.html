@@ -1,0 +1,17 @@
+{% extends 'cadastro.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section" style="width: 50%; margin: 20px auto;">
+    <form method="POST">
+        {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-group">
+            </div>
+        </fieldset>
+        <input type="submit" id="submit" value="LOGAR">
+    </form>
+    <div class='border-top pt-3' style="float: right;">
+        <small class="text-muted">Não possui uma conta?<a href="{% url 'cadastro' %}">Cadastre-se aqui.</a></small>
+    </div>
+</div>
+{% endblock content %}

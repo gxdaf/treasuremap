@@ -18,10 +18,9 @@ import dateutil.parser as dparser
 
 dthr = datetime.datetime.now() #Momento atual
 
-
 def acao():
     print('Qual tabela deseja consultar?')
-    print('1. Expectativas do mercado;\n2. Selic Meta;\n3. IPCA;\n4. TR;\n5. IGP-M.')
+    print('1. Expectativas do mercado;\n2. Selic Meta;\n3. IPCA;\n4. TR;\n5. IGP-M;\n6. TPFs;\n7. Sair.')
     escolha = input('Insira a opção: ')
     if '1' in escolha:
         print('Qual indicador deseja consultar?\n 1. PIB;\n 2. Selic Meta;\n 3.IPCA;\n4. IGP-M.')
@@ -45,6 +44,10 @@ def acao():
         taxas_atuais('tr')
     elif '5' in escolha:
         taxas_atuais('igpm')
+    elif '6' in escolha:
+        tpf()
+    elif '7' in escolha:
+        run = False
     else:
         print('Opção inexistente.')
         acao()
@@ -66,11 +69,11 @@ def limpeza(valores=None):
     if '1' in esc:
         tipo_col = []
         colunas = []
-        troca = input(f"Deseja alterar o nome das colunas? (S/N) {valores.head()}\nNa presença de '%', '/' ou '.' no nome das colunas, recomenda-se a mudança. ").upper()
+        troca = input(f"Deseja alterar o nome das colunas? (S/N) {valores.head()}\nNa presença de '%', '/', '.', números e/ou acentuação gráfica no nome das colunas, recomenda-se a mudança. ").upper()
         if 'S' in troca:
             troca = tuple(sorted(valores))
             for coluna in troca:
-                colunas.append(input(f'Digite o nome que substituirá {coluna}').capitalize())
+                colunas.append(input(f'Digite o nome que substituirá {coluna}'))
         else:
             colunas = tuple(sorted(valores))
         for coluna in colunas:
@@ -90,8 +93,9 @@ def limpeza(valores=None):
                             if 'nan' in celula[i]:
                                 celula[i] = 'NULL'
                             else:
-                                celula[i] = celula[i][:3]
-                                celula[i] = f'{celula[i][:1]}.{celula[i][1:]}'
+                                if '.' not in celula[i]:
+                                    celula[i] = celula[i][:3]
+                                    celula[i] = f'{celula[i][:1]}.{celula[i][1:]}'
                                 celula[i] = float(celula[i])
                     elif isinstance(celula[i], numpy.float64) == False or isinstance(celula[i], numpy.int64) == False or isinstance(celula[i], float) == False:
                         if '/' in celula[i]:
@@ -103,7 +107,10 @@ def limpeza(valores=None):
                             celula[i] = 'NULL'
                         if '%' in celula[i]:
                             celula[i] = celula[i].translate({ord('%'): None})
-                        if ',' in celula[i]:
+                        if 'R$' in celula[i]:
+                            celula[i] = celula[i].translate({ord('R'): None})
+                            celula[i] = celula[i].translate({ord('$'): None})
+                        if ',' in celula[i] and (r'^\w*' in celula[i]):
                             celula[i] = celula[i].replace(',', '.')
                             celula[i] = float(celula[i])
                         if isinstance(celula[i], str) == True and '-' not in celula[i]:
@@ -112,7 +119,7 @@ def limpeza(valores=None):
     elif '4' in esc:
         drop_tab(nome_tab)
     elif '5' in esc:
-        pass
+        run = False
     else: 
         print('Opção inválida.')
         limpeza()
@@ -143,6 +150,19 @@ def expec_merc(e):
     th = soup.find(name= 'thead').get_text()
     df = pd.read_html(str(tab))[0]
     limpeza(df)
+
+def tpf():
+    url = 'https://www.tesourodireto.com.br/titulos/precos-e-taxas.htm'
+    driver.get(url)
+    time.sleep(2)
+    xpath_sa = driver.find_element_by_xpath('/html/body/main/div[1]/div[2]/div/div/div/div[1]/div/div[9]/table')
+    xpath_sa = xpath_sa.get_attribute('outerHTML')
+    soup = BeautifulSoup(xpath_sa, 'html.parser')
+    data = soup.find('table')
+    df = pd.read_html(str(data))[0]
+    df = df.drop(columns='Unnamed: 5')
+    limpeza(df)
+
 
 def selic():   
     '''
@@ -183,4 +203,7 @@ def taxas_atuais(taxa):
     print(df)
     limpeza(df)
 
-acao()
+run = True
+
+while run:
+    acao()

@@ -1,0 +1,15 @@
+{% extends 'cadastro.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section" style="width: 50%; margin: 20px auto;">
+    <h3>Bem-vindo(a), {{user.first_name}}</h3>
+    <form method="POST">
+        {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-group">
+            </div>
+        </fieldset>
+        <input type="submit" id="submit" value="LOGAR">
+    </form>
+</div>
+{% endblock content %}
