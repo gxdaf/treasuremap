@@ -1,168 +1,100 @@
-html, body {
-    width: 100%;
-    height: 100%;
+body {
+    background-color: white;
+    flex: 1;
     margin: 0;
+    height: 100%;
+    width: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-header {
-    width: 100%;
-    height: 25%;
+* {
+    padding: 0px;
 }
 
-#menu {
-    margin-top: -100px;
-}
-
-#menu a {
-    clear: right;
-    text-decoration: none;
-    color: rgb(92, 92, 92);
-    background-color: white;
-    font-weight: bold;
-}
-
-#pessoa-imagem {
-    width: 100%;
-    height: 8%;
-    box-shadow: 0px 0px 5px 0.25px black;
-    text-align: right;
+.pessoa-imagem {
     position: fixed;
-    background-color: rgb(232, 232, 232);
-}
-
-#pessoa-imagem p {
-    text-align: right;
-    margin-right: 102px;
-    margin-top: -55px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
-}
-
-#pessoa-imagem a {
-    z-index: -200;
-    clear: right;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    line-height: 50px;
-    background-color: white;
-    font-weight: bold;
-    padding-top: -2%;
-    background-color: rgb(232, 232, 232);
-}
-
-#pessoa-imagem a:hover {
-    color: rgb(71, 160, 255);
-}
-
-#pessoa-imagem img {
-    max-width: 90%;
-    max-height: 90%;
-    margin-right: 20px;
-    margin-top: 2px;
-}
-
-#area-logo {
-    min-width: none;
-    margin: 0;
+    height: 10%;
+    border-bottom: 3px solid rgb(0, 0, 0);
     width: 100%;
-    height: 100%;
-    padding-top: 85px;
-    text-align: center;
+    background: linear-gradient(55deg, #29c4fc 0%, #ffffff 51%, #ffffff 85%);
+    flex: 1;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-#area-logo img {
-    max-width: 100%;
-    max-height: 100%;
-    text-align: center;
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: end;
+    margin-left: 50%;
+    padding-right: 25%;
 }
 
-#simulacao {
-    margin-top: 100px;
-    margin-left: 2%;
-    margin-right: 2%;
-    text-align: center;
+
+.center img {
+    width: 35%;
+    height: auto;
+    padding-right: 12px;
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+
+.pessoa-imagem p {
+    padding-left: 50px;
+}
+
+.center a {
+    text-decoration: none;
+    color: rgb(26, 34, 34);
+    font-weight: bold;
+    margin-top: -20px;
+}
+
+.center a:hover {
+    text-decoration: none;
+    color: rgb(26, 34, 34);
+    font-weight: bolder;
+    margin-top: -20px;
+    color: #098fc0;
+}
+
+.img {
+    z-index: -200;
+    background-color: white;
+    padding-top: 100px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.img img {
+    width: 100%;
+}
+
+form {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 45px;
 }
 
 fieldset {
-    box-shadow: 5px 5px 5px 0.15px black;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.679);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-fieldset h1 {
-    margin-top: 2px;
-    text-align: center;
-}
-
-fieldset h2 {
-    margin-top: 2px;
-    text-align: center;
-}
-
-fieldset a {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-decoration: none;
-}
-
-fieldset a:hover {
-    color: rgb(71, 160, 255);
-}
-
-#tempo {
-    text-align: center;
-}
-
-#rentabilidade {
-    text-align: center;
-}
-
-#vencimento {
-    text-align: center;
-}
-
-#tempo input {
-    border-radius: 10px;
-    -webkit-border-radius: 2;
-    -moz-border-radius: 2;
-    -ms-border-radius: 2;
-    -o-border-radius: 2;
-    border: 1px solid black;
-    text-align: center;
-    width: 250px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 10px;
-    margin-top: 5px;
-}
-
-#rentabilidade input {
-    border-radius: 10px;
-    -webkit-border-radius: 2;
-    -moz-border-radius: 2;
-    -ms-border-radius: 2;
-    -o-border-radius: 2;
-    border: 1px solid black;
-    text-align: center;
-    width: 250px;
-    padding: 10px;
-        margin-top: 5px;
-}
-
-#vencimento input {
-    border-radius: 10px;
-    -webkit-border-radius: 2;
-    -moz-border-radius: 2;
-    -ms-border-radius: 2;
-    -o-border-radius: 2;
-    border: 1px solid black;
-    text-align: center;
-    padding: 10px;
-        margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    border-radius: 5px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background: linear-gradient(55deg, #ffffff 0%, #afeef3 51%, #7fbbf3 85%);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 #simular {
@@ -170,148 +102,250 @@ fieldset a:hover {
 }
 
 #simular input {
-    border-radius: 10px;
-    -webkit-border-radius: 2;
-    -moz-border-radius: 2;
-    -ms-border-radius: 2;
-    -o-border-radius: 2;
-    border: 1px solid black;
-    text-align: center;
-}
-
-
-label {
-    display: block;
-}
-
-.nav {
-    border-bottom: 1px solid #EAEAEB;
-    text-align: right;
-    height: 100px;
-    line-height: 100px;
-    background-color: white;
-    box-shadow: 0px 0px 10px 0.5px black;
-}
-.menu {
-    margin: 0 30px 0 0;
-    z-index: 200;
-}
-.menu a {
-    clear: right;
-    text-decoration: none;
-    color: rgb(92, 92, 92);
-    margin: 0 10px;
-    line-height: 50px;
-    background-color: white;
+    padding: 15px 45px 15px 45px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
     font-weight: bold;
 }
 
-
-@media only screen and (max-width: 950px) {
-    #pessoa-imagem p {
-        width: 10%;
-        margin: 0;
-        margin-left: 82%;
-        margin-top: -65px;
-        text-align: right;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        display: none;
-    }
-
-    #tempo {
-        margin: auto;
-        display: block;
-        text-align: center;
-    }
-
-    #tempo input {
-        border-radius: 10px;
-        -webkit-border-radius: 2;
-        -moz-border-radius: 2;
-        -ms-border-radius: 2;
-        -o-border-radius: 2;
-        border: 1px solid black;
-        text-align: center;
-        width: 85%;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        padding: 10px;
-        margin-top: 5px;
-    }
-
-    #rentabilidade input {
-        border-radius: 10px;
-        -webkit-border-radius: 2;
-        -moz-border-radius: 2;
-        -ms-border-radius: 2;
-        -o-border-radius: 2;
-        border: 1px solid black;
-        text-align: center;
-        width: 85%;
-        padding: 10px;
-        margin-top: 5px;
-    }
-
-    #vencimento input {
-        border-radius: 10px;
-        -webkit-border-radius: 2;
-        -moz-border-radius: 2;
-        -ms-border-radius: 2;
-        -o-border-radius: 2;
-        border: 1px solid black;
-        text-align: center;
-        padding: 10px;
-        margin-top: 5px;
-    }
-    
-
-    label {
-        display: block;
-        cursor: pointer;
-    }
-    .menu {
-        text-align: center;
-        width: 100%;
-        display: none;
-    }
-    .menu a {
-        display: block;
-        border-bottom: 1px solid #EAEAEB;
-        margin: 0;
-     
-    }
-    #toggle:checked + .menu {
-        display: block;
-    }
+#simular input:hover {
+    padding: 15px 45px 15px 45px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    -moz-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    font-weight: bold;
+    background-color: lightgray;
 }
 
-h2 {
-    margin-top: 1%;
-    margin-bottom: 2%;
-    text-align: left;
-    position: relative;
+#simular input:active {
+    padding: 15px 45px 15px 45px;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
 }
 
-p {
-    text-align: justify; 
-    color: black; 
-    font-weight: 500;
-    font-size: 18px;
-    position: relative;
+
+li {
+    margin-left: 30px;
 }
 
+#tempo input {
+    width: 250px;
+    height: 20px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#rentabilidade input {
+    width: 128px;
+    height: 20px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#vencimento input {
+    width: 195px;
+    height: 20px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
 
 #artigos {
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-right: 30px;
+    margin-left: 30px;
 }
+
+#artigos fieldset {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background: linear-gradient(55deg, #ffffff 0%, #afeef3 51%, #7fbbf3 85%);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+#artigos a {
+    font-weight: bold;
+    font-size: 18px;
+    color: #027ba7;
+}
+
+#artigos a:hover {
+    font-weight: bolder;
+    font-size: 20px;
+    color: #074e68;
+    text-decoration: none;
+}
+
+
+ul {
+    padding-bottom: 40px;
+}
+
+#artigos li {
+    line-height: 25px;
+    padding-bottom: 10px;
+    list-style-type: none;
+    border-bottom: 1px solid #29c4fc;
+    border-image: linear-gradient (to left, black, green);
+    border-image-slice: 1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    padding-top: 10px;
+}
+
+#sugestoes fieldset {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background: linear-gradient(55deg, #ffffff 0%, #afeef3 51%, #7fbbf3 85%);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
 
 #sugestoes {
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 
-#cred p {
+#sugestoes a {
+    font-weight: bold;
+    font-size: 18px;
+    color: #027ba7;
+}
+
+#sugestoes a:hover {
+    font-weight: bolder;
+    font-size: 20px;
+    color: #074e68;
+    text-decoration: none;
+}
+
+
+
+ul {
+    padding-bottom: 40px;
+}
+
+#sugestoes li {
+    line-height: 25px;
+    padding-bottom: 10px;
+    list-style-type: none;
+    border-bottom: 1px solid #29c4fc;
+    border-image: linear-gradient (to left, black, green);
+    border-image-slice: 1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    padding-top: 10px;
+}
+
+#rodape {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    background: linear-gradient(55deg, #ffffff 0%, #ffffff 51%, #29c4fc 85%);
+    border-top: 3px solid black;
+}
+
+#cred {
     text-align: center;
-    padding-bottom: 1%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.texto {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 40px;
+    margin-left: 150px;
+    margin-right: 150px;
+    border: 0.2px solid rgb(218, 218, 218);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.texto h1 {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 35px;
+    border-bottom: 0.2px solid black;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+.texto h4 {
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 10px;
+    border-bottom: 0.2px solid black;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+
+.texto p {
+    text-align: center;
+    padding-bottom: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    padding-left: 150px;
+    padding-right: 150px;
 }
