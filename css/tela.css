@@ -1,0 +1,333 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.tela {
+    height: 100%;
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@media screen and (max-width:600px) {
+    .tela {
+        height: 100%;
+        width: 100%;
+    }
+
+    .tela img {
+        padding-top: 15%;
+        display: block;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tela #cadastro {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+.tela img {
+    display: block;
+    width: 100%;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 30px;
+}
+
+.tela #login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.tela #login input {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tela #login input:hover {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tela #login input:active {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(204, 204, 204);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: none;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tela #cadastro {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.tela #cadastro input {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tela #cadastro input:hover {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tela #cadastro input:active {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(204, 204, 204);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: none;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#simulacao {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+input:focus {
+    border: 6px inset rgb(77, 178, 255);
+    box-sizing: content-box;
+}
+
+#simulacao label {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#email {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#senha {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#pnome {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#unome {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#datanasc {
+    padding: 20px 40px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    margin-top: 15px;
+}
+
+input [type=submit] {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+input:hover [type=submit] {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+input:active [type=submit] {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(204, 204, 204);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: none;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#cadastroperfil {
+    padding: 15px 62px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+
+#cadastroperfil:hover {
+    padding: 15px 62px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#cadastroperfil:active {
+    padding: 15px 62px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(204, 204, 204);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: none;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}

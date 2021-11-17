@@ -1,0 +1,313 @@
+body {
+    background-color: white;
+    flex: 1;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+* {
+    padding: 0px;
+}
+
+.tela {
+    height: 100%;
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.pessoa-imagem {
+    position: fixed;
+    margin-top: -42px;
+    height: 10%;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    width: 100%;
+    background: linear-gradient(55deg, #29c4fc 0%, #ffffff 51%, #ffffff 85%);
+    flex: 1;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+@media screen and (max-width:600px) {
+    .tela {
+        height: 100%;
+        width: 100%;
+    }
+
+    .tela img {
+        padding-top: 15%;
+        display: block;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tela #cadastro {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+#simulacao {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+input:focus {
+    border: 6px inset rgb(77, 178, 255);
+    box-sizing: content-box;
+}
+
+#simulacao label {
+    font-size: 18px;
+}
+
+#simulacao input[type=text] {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    text-align: center;
+}
+
+
+#email {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#senha {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#pnome {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#unome {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#datanasc {
+    padding: 20px 40px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    margin-top: 15px;
+}
+
+#submit {
+    padding: 18px 100px;
+    color: rgb(59, 119, 175);
+    background-color: rgb(115, 225, 250);
+    border: 3px solid rgb(204, 204, 204);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+#submit:hover {
+    padding: 18px 100px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(7, 62, 104);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 3px solid rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    -moz-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
+
+#submit:active {
+    padding: 15px 100px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(1, 18, 61);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    -moz-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
+
+#cadastroperfil {
+    padding: 18px 100px;
+    color: rgb(59, 119, 175);
+    background-color: rgb(115, 225, 250);
+    border: 3px solid rgb(204, 204, 204);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#cadastroperfil:hover {
+    padding: 18px 100px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(7, 62, 104);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 3px solid rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    -moz-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
+
+#cadastroperfil:active {
+    padding: 15px 100px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(1, 18, 61);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    -moz-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
+
+h2 {
+    color: rgb(60, 60, 60);
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    font-size: 50px;
+    padding-top: 100px;
+    text-align: center;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+#tipocadastro {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#tipocadastro input {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#tipocadastro input:hover {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px black;    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#tipocadastro input:active {
+    padding: 15px 100px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(204, 204, 204);
+    border: 1px solid rgb(133, 133, 133);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: none;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
